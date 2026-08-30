@@ -13,6 +13,7 @@ import { Route as IndexRouteImport } from './routes/index'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as ClassesRouteImport } from './routes/classes'
 import { Route as EntrepreneursRouteImport } from './routes/entrepreneurs'
+import { Route as JoinRouteImport } from './routes/join'
 import { Route as JuniorRouteImport } from './routes/junior'
 import { Route as ProgramsRouteImport } from './routes/programs'
 import { Route as YoungRouteImport } from './routes/young'
@@ -37,6 +38,11 @@ const EntrepreneursRoute = EntrepreneursRouteImport.update({
   path: '/entrepreneurs',
   getParentRoute: () => rootRouteImport,
 } as any)
+const JoinRoute = JoinRouteImport.update({
+  id: '/join',
+  path: '/join',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const JuniorRoute = JuniorRouteImport.update({
   id: '/junior',
   path: '/junior',
@@ -58,6 +64,7 @@ export interface FileRoutesByFullPath {
   '/about': typeof AboutRoute
   '/classes': typeof ClassesRoute
   '/entrepreneurs': typeof EntrepreneursRoute
+  '/join': typeof JoinRoute
   '/junior': typeof JuniorRoute
   '/programs': typeof ProgramsRoute
   '/young': typeof YoungRoute
@@ -67,6 +74,7 @@ export interface FileRoutesByTo {
   '/about': typeof AboutRoute
   '/classes': typeof ClassesRoute
   '/entrepreneurs': typeof EntrepreneursRoute
+  '/join': typeof JoinRoute
   '/junior': typeof JuniorRoute
   '/programs': typeof ProgramsRoute
   '/young': typeof YoungRoute
@@ -77,6 +85,7 @@ export interface FileRoutesById {
   '/about': typeof AboutRoute
   '/classes': typeof ClassesRoute
   '/entrepreneurs': typeof EntrepreneursRoute
+  '/join': typeof JoinRoute
   '/junior': typeof JuniorRoute
   '/programs': typeof ProgramsRoute
   '/young': typeof YoungRoute
@@ -88,6 +97,7 @@ export interface FileRouteTypes {
     | '/about'
     | '/classes'
     | '/entrepreneurs'
+    | '/join'
     | '/junior'
     | '/programs'
     | '/young'
@@ -97,6 +107,7 @@ export interface FileRouteTypes {
     | '/about'
     | '/classes'
     | '/entrepreneurs'
+    | '/join'
     | '/junior'
     | '/programs'
     | '/young'
@@ -106,6 +117,7 @@ export interface FileRouteTypes {
     | '/about'
     | '/classes'
     | '/entrepreneurs'
+    | '/join'
     | '/junior'
     | '/programs'
     | '/young'
@@ -116,6 +128,7 @@ export interface RootRouteChildren {
   AboutRoute: typeof AboutRoute
   ClassesRoute: typeof ClassesRoute
   EntrepreneursRoute: typeof EntrepreneursRoute
+  JoinRoute: typeof JoinRoute
   JuniorRoute: typeof JuniorRoute
   ProgramsRoute: typeof ProgramsRoute
   YoungRoute: typeof YoungRoute
@@ -151,6 +164,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof EntrepreneursRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/join': {
+      id: '/join'
+      path: '/join'
+      fullPath: '/join'
+      preLoaderRoute: typeof JoinRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/junior': {
       id: '/junior'
       path: '/junior'
@@ -180,6 +200,7 @@ const rootRouteChildren: RootRouteChildren = {
   AboutRoute: AboutRoute,
   ClassesRoute: ClassesRoute,
   EntrepreneursRoute: EntrepreneursRoute,
+  JoinRoute: JoinRoute,
   JuniorRoute: JuniorRoute,
   ProgramsRoute: ProgramsRoute,
   YoungRoute: YoungRoute,
