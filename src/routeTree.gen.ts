@@ -11,6 +11,7 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as AboutRouteImport } from './routes/about'
+import { Route as EntrepreneursRouteImport } from './routes/entrepreneurs'
 import { Route as JuniorRouteImport } from './routes/junior'
 import { Route as ProgramsRouteImport } from './routes/programs'
 import { Route as YoungRouteImport } from './routes/young'
@@ -23,6 +24,11 @@ const IndexRoute = IndexRouteImport.update({
 const AboutRoute = AboutRouteImport.update({
   id: '/about',
   path: '/about',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const EntrepreneursRoute = EntrepreneursRouteImport.update({
+  id: '/entrepreneurs',
+  path: '/entrepreneurs',
   getParentRoute: () => rootRouteImport,
 } as any)
 const JuniorRoute = JuniorRouteImport.update({
@@ -44,6 +50,7 @@ const YoungRoute = YoungRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/entrepreneurs': typeof EntrepreneursRoute
   '/junior': typeof JuniorRoute
   '/programs': typeof ProgramsRoute
   '/young': typeof YoungRoute
@@ -51,6 +58,7 @@ export interface FileRoutesByFullPath {
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/entrepreneurs': typeof EntrepreneursRoute
   '/junior': typeof JuniorRoute
   '/programs': typeof ProgramsRoute
   '/young': typeof YoungRoute
@@ -59,21 +67,31 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/entrepreneurs': typeof EntrepreneursRoute
   '/junior': typeof JuniorRoute
   '/programs': typeof ProgramsRoute
   '/young': typeof YoungRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/about' | '/junior' | '/programs' | '/young'
+  fullPaths:
+    '/' | '/about' | '/entrepreneurs' | '/junior' | '/programs' | '/young'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/about' | '/junior' | '/programs' | '/young'
-  id: '__root__' | '/' | '/about' | '/junior' | '/programs' | '/young'
+  to: '/' | '/about' | '/entrepreneurs' | '/junior' | '/programs' | '/young'
+  id:
+    | '__root__'
+    | '/'
+    | '/about'
+    | '/entrepreneurs'
+    | '/junior'
+    | '/programs'
+    | '/young'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AboutRoute: typeof AboutRoute
+  EntrepreneursRoute: typeof EntrepreneursRoute
   JuniorRoute: typeof JuniorRoute
   ProgramsRoute: typeof ProgramsRoute
   YoungRoute: typeof YoungRoute
@@ -93,6 +111,13 @@ declare module '@tanstack/react-router' {
       path: '/about'
       fullPath: '/about'
       preLoaderRoute: typeof AboutRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/entrepreneurs': {
+      id: '/entrepreneurs'
+      path: '/entrepreneurs'
+      fullPath: '/entrepreneurs'
+      preLoaderRoute: typeof EntrepreneursRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/junior': {
@@ -122,6 +147,7 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AboutRoute: AboutRoute,
+  EntrepreneursRoute: EntrepreneursRoute,
   JuniorRoute: JuniorRoute,
   ProgramsRoute: ProgramsRoute,
   YoungRoute: YoungRoute,
