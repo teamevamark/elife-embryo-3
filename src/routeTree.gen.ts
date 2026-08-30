@@ -14,6 +14,7 @@ import { Route as AboutRouteImport } from './routes/about'
 import { Route as AuthRouteImport } from './routes/auth'
 import { Route as ClassesRouteImport } from './routes/classes'
 import { Route as ContactRouteImport } from './routes/contact'
+import { Route as DashboardRouteImport } from './routes/dashboard'
 import { Route as EntrepreneursRouteImport } from './routes/entrepreneurs'
 import { Route as JoinRouteImport } from './routes/join'
 import { Route as JuniorRouteImport } from './routes/junior'
@@ -43,6 +44,11 @@ const ClassesRoute = ClassesRouteImport.update({
 const ContactRoute = ContactRouteImport.update({
   id: '/contact',
   path: '/contact',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DashboardRoute = DashboardRouteImport.update({
+  id: '/dashboard',
+  path: '/dashboard',
   getParentRoute: () => rootRouteImport,
 } as any)
 const EntrepreneursRoute = EntrepreneursRouteImport.update({
@@ -77,6 +83,7 @@ export interface FileRoutesByFullPath {
   '/auth': typeof AuthRoute
   '/classes': typeof ClassesRoute
   '/contact': typeof ContactRoute
+  '/dashboard': typeof DashboardRoute
   '/entrepreneurs': typeof EntrepreneursRoute
   '/join': typeof JoinRoute
   '/junior': typeof JuniorRoute
@@ -89,6 +96,7 @@ export interface FileRoutesByTo {
   '/auth': typeof AuthRoute
   '/classes': typeof ClassesRoute
   '/contact': typeof ContactRoute
+  '/dashboard': typeof DashboardRoute
   '/entrepreneurs': typeof EntrepreneursRoute
   '/join': typeof JoinRoute
   '/junior': typeof JuniorRoute
@@ -102,6 +110,7 @@ export interface FileRoutesById {
   '/auth': typeof AuthRoute
   '/classes': typeof ClassesRoute
   '/contact': typeof ContactRoute
+  '/dashboard': typeof DashboardRoute
   '/entrepreneurs': typeof EntrepreneursRoute
   '/join': typeof JoinRoute
   '/junior': typeof JuniorRoute
@@ -116,6 +125,7 @@ export interface FileRouteTypes {
     | '/auth'
     | '/classes'
     | '/contact'
+    | '/dashboard'
     | '/entrepreneurs'
     | '/join'
     | '/junior'
@@ -128,6 +138,7 @@ export interface FileRouteTypes {
     | '/auth'
     | '/classes'
     | '/contact'
+    | '/dashboard'
     | '/entrepreneurs'
     | '/join'
     | '/junior'
@@ -140,6 +151,7 @@ export interface FileRouteTypes {
     | '/auth'
     | '/classes'
     | '/contact'
+    | '/dashboard'
     | '/entrepreneurs'
     | '/join'
     | '/junior'
@@ -153,6 +165,7 @@ export interface RootRouteChildren {
   AuthRoute: typeof AuthRoute
   ClassesRoute: typeof ClassesRoute
   ContactRoute: typeof ContactRoute
+  DashboardRoute: typeof DashboardRoute
   EntrepreneursRoute: typeof EntrepreneursRoute
   JoinRoute: typeof JoinRoute
   JuniorRoute: typeof JuniorRoute
@@ -195,6 +208,13 @@ declare module '@tanstack/react-router' {
       path: '/contact'
       fullPath: '/contact'
       preLoaderRoute: typeof ContactRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/dashboard': {
+      id: '/dashboard'
+      path: '/dashboard'
+      fullPath: '/dashboard'
+      preLoaderRoute: typeof DashboardRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/entrepreneurs': {
@@ -241,6 +261,7 @@ const rootRouteChildren: RootRouteChildren = {
   AuthRoute: AuthRoute,
   ClassesRoute: ClassesRoute,
   ContactRoute: ContactRoute,
+  DashboardRoute: DashboardRoute,
   EntrepreneursRoute: EntrepreneursRoute,
   JoinRoute: JoinRoute,
   JuniorRoute: JuniorRoute,
