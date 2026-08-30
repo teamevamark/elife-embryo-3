@@ -11,6 +11,7 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as AboutRouteImport } from './routes/about'
+import { Route as ClassesRouteImport } from './routes/classes'
 import { Route as EntrepreneursRouteImport } from './routes/entrepreneurs'
 import { Route as JuniorRouteImport } from './routes/junior'
 import { Route as ProgramsRouteImport } from './routes/programs'
@@ -24,6 +25,11 @@ const IndexRoute = IndexRouteImport.update({
 const AboutRoute = AboutRouteImport.update({
   id: '/about',
   path: '/about',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ClassesRoute = ClassesRouteImport.update({
+  id: '/classes',
+  path: '/classes',
   getParentRoute: () => rootRouteImport,
 } as any)
 const EntrepreneursRoute = EntrepreneursRouteImport.update({
@@ -50,6 +56,7 @@ const YoungRoute = YoungRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/classes': typeof ClassesRoute
   '/entrepreneurs': typeof EntrepreneursRoute
   '/junior': typeof JuniorRoute
   '/programs': typeof ProgramsRoute
@@ -58,6 +65,7 @@ export interface FileRoutesByFullPath {
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/classes': typeof ClassesRoute
   '/entrepreneurs': typeof EntrepreneursRoute
   '/junior': typeof JuniorRoute
   '/programs': typeof ProgramsRoute
@@ -67,6 +75,7 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/classes': typeof ClassesRoute
   '/entrepreneurs': typeof EntrepreneursRoute
   '/junior': typeof JuniorRoute
   '/programs': typeof ProgramsRoute
@@ -75,13 +84,27 @@ export interface FileRoutesById {
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
-    '/' | '/about' | '/entrepreneurs' | '/junior' | '/programs' | '/young'
+    | '/'
+    | '/about'
+    | '/classes'
+    | '/entrepreneurs'
+    | '/junior'
+    | '/programs'
+    | '/young'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/about' | '/entrepreneurs' | '/junior' | '/programs' | '/young'
+  to:
+    | '/'
+    | '/about'
+    | '/classes'
+    | '/entrepreneurs'
+    | '/junior'
+    | '/programs'
+    | '/young'
   id:
     | '__root__'
     | '/'
     | '/about'
+    | '/classes'
     | '/entrepreneurs'
     | '/junior'
     | '/programs'
@@ -91,6 +114,7 @@ export interface FileRouteTypes {
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AboutRoute: typeof AboutRoute
+  ClassesRoute: typeof ClassesRoute
   EntrepreneursRoute: typeof EntrepreneursRoute
   JuniorRoute: typeof JuniorRoute
   ProgramsRoute: typeof ProgramsRoute
@@ -111,6 +135,13 @@ declare module '@tanstack/react-router' {
       path: '/about'
       fullPath: '/about'
       preLoaderRoute: typeof AboutRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/classes': {
+      id: '/classes'
+      path: '/classes'
+      fullPath: '/classes'
+      preLoaderRoute: typeof ClassesRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/entrepreneurs': {
@@ -147,6 +178,7 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AboutRoute: AboutRoute,
+  ClassesRoute: ClassesRoute,
   EntrepreneursRoute: EntrepreneursRoute,
   JuniorRoute: JuniorRoute,
   ProgramsRoute: ProgramsRoute,
