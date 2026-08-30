@@ -27,3 +27,4 @@ npm run dev
 - TypeScript
 - React
 - Tailwind CSS
+30/08/26 barcode
