@@ -11,6 +11,13 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as AboutRouteImport } from './routes/about'
+import { Route as AdminRouteImport } from './routes/admin'
+import { Route as AuthRouteImport } from './routes/auth'
+import { Route as ClassesRouteImport } from './routes/classes'
+import { Route as ContactRouteImport } from './routes/contact'
+import { Route as DashboardRouteImport } from './routes/dashboard'
+import { Route as EntrepreneursRouteImport } from './routes/entrepreneurs'
+import { Route as JoinRouteImport } from './routes/join'
 import { Route as JuniorRouteImport } from './routes/junior'
 import { Route as ProgramsRouteImport } from './routes/programs'
 import { Route as YoungRouteImport } from './routes/young'
@@ -23,6 +30,41 @@ const IndexRoute = IndexRouteImport.update({
 const AboutRoute = AboutRouteImport.update({
   id: '/about',
   path: '/about',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AdminRoute = AdminRouteImport.update({
+  id: '/admin',
+  path: '/admin',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AuthRoute = AuthRouteImport.update({
+  id: '/auth',
+  path: '/auth',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ClassesRoute = ClassesRouteImport.update({
+  id: '/classes',
+  path: '/classes',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ContactRoute = ContactRouteImport.update({
+  id: '/contact',
+  path: '/contact',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DashboardRoute = DashboardRouteImport.update({
+  id: '/dashboard',
+  path: '/dashboard',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const EntrepreneursRoute = EntrepreneursRouteImport.update({
+  id: '/entrepreneurs',
+  path: '/entrepreneurs',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const JoinRoute = JoinRouteImport.update({
+  id: '/join',
+  path: '/join',
   getParentRoute: () => rootRouteImport,
 } as any)
 const JuniorRoute = JuniorRouteImport.update({
@@ -44,6 +86,13 @@ const YoungRoute = YoungRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/admin': typeof AdminRoute
+  '/auth': typeof AuthRoute
+  '/classes': typeof ClassesRoute
+  '/contact': typeof ContactRoute
+  '/dashboard': typeof DashboardRoute
+  '/entrepreneurs': typeof EntrepreneursRoute
+  '/join': typeof JoinRoute
   '/junior': typeof JuniorRoute
   '/programs': typeof ProgramsRoute
   '/young': typeof YoungRoute
@@ -51,6 +100,13 @@ export interface FileRoutesByFullPath {
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/admin': typeof AdminRoute
+  '/auth': typeof AuthRoute
+  '/classes': typeof ClassesRoute
+  '/contact': typeof ContactRoute
+  '/dashboard': typeof DashboardRoute
+  '/entrepreneurs': typeof EntrepreneursRoute
+  '/join': typeof JoinRoute
   '/junior': typeof JuniorRoute
   '/programs': typeof ProgramsRoute
   '/young': typeof YoungRoute
@@ -59,21 +115,72 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/admin': typeof AdminRoute
+  '/auth': typeof AuthRoute
+  '/classes': typeof ClassesRoute
+  '/contact': typeof ContactRoute
+  '/dashboard': typeof DashboardRoute
+  '/entrepreneurs': typeof EntrepreneursRoute
+  '/join': typeof JoinRoute
   '/junior': typeof JuniorRoute
   '/programs': typeof ProgramsRoute
   '/young': typeof YoungRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/about' | '/junior' | '/programs' | '/young'
+  fullPaths:
+    | '/'
+    | '/about'
+    | '/admin'
+    | '/auth'
+    | '/classes'
+    | '/contact'
+    | '/dashboard'
+    | '/entrepreneurs'
+    | '/join'
+    | '/junior'
+    | '/programs'
+    | '/young'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/about' | '/junior' | '/programs' | '/young'
-  id: '__root__' | '/' | '/about' | '/junior' | '/programs' | '/young'
+  to:
+    | '/'
+    | '/about'
+    | '/admin'
+    | '/auth'
+    | '/classes'
+    | '/contact'
+    | '/dashboard'
+    | '/entrepreneurs'
+    | '/join'
+    | '/junior'
+    | '/programs'
+    | '/young'
+  id:
+    | '__root__'
+    | '/'
+    | '/about'
+    | '/admin'
+    | '/auth'
+    | '/classes'
+    | '/contact'
+    | '/dashboard'
+    | '/entrepreneurs'
+    | '/join'
+    | '/junior'
+    | '/programs'
+    | '/young'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AboutRoute: typeof AboutRoute
+  AdminRoute: typeof AdminRoute
+  AuthRoute: typeof AuthRoute
+  ClassesRoute: typeof ClassesRoute
+  ContactRoute: typeof ContactRoute
+  DashboardRoute: typeof DashboardRoute
+  EntrepreneursRoute: typeof EntrepreneursRoute
+  JoinRoute: typeof JoinRoute
   JuniorRoute: typeof JuniorRoute
   ProgramsRoute: typeof ProgramsRoute
   YoungRoute: typeof YoungRoute
@@ -93,6 +200,55 @@ declare module '@tanstack/react-router' {
       path: '/about'
       fullPath: '/about'
       preLoaderRoute: typeof AboutRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/admin': {
+      id: '/admin'
+      path: '/admin'
+      fullPath: '/admin'
+      preLoaderRoute: typeof AdminRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/auth': {
+      id: '/auth'
+      path: '/auth'
+      fullPath: '/auth'
+      preLoaderRoute: typeof AuthRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/classes': {
+      id: '/classes'
+      path: '/classes'
+      fullPath: '/classes'
+      preLoaderRoute: typeof ClassesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/contact': {
+      id: '/contact'
+      path: '/contact'
+      fullPath: '/contact'
+      preLoaderRoute: typeof ContactRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/dashboard': {
+      id: '/dashboard'
+      path: '/dashboard'
+      fullPath: '/dashboard'
+      preLoaderRoute: typeof DashboardRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/entrepreneurs': {
+      id: '/entrepreneurs'
+      path: '/entrepreneurs'
+      fullPath: '/entrepreneurs'
+      preLoaderRoute: typeof EntrepreneursRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/join': {
+      id: '/join'
+      path: '/join'
+      fullPath: '/join'
+      preLoaderRoute: typeof JoinRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/junior': {
@@ -122,6 +278,13 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AboutRoute: AboutRoute,
+  AdminRoute: AdminRoute,
+  AuthRoute: AuthRoute,
+  ClassesRoute: ClassesRoute,
+  ContactRoute: ContactRoute,
+  DashboardRoute: DashboardRoute,
+  EntrepreneursRoute: EntrepreneursRoute,
+  JoinRoute: JoinRoute,
   JuniorRoute: JuniorRoute,
   ProgramsRoute: ProgramsRoute,
   YoungRoute: YoungRoute,
