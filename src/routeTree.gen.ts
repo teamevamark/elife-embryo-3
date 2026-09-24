@@ -14,6 +14,7 @@ import { Route as AboutRouteImport } from './routes/about'
 import { Route as AdminRouteRouteImport } from './routes/admin/route'
 import { Route as AdminRouteImport } from './routes/admin'
 import { Route as AuthRouteImport } from './routes/auth'
+import { Route as ClaimAdminRouteImport } from './routes/claim-admin'
 import { Route as ClassesRouteImport } from './routes/classes'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as DashboardRouteImport } from './routes/dashboard'
@@ -21,6 +22,7 @@ import { Route as EntrepreneursRouteImport } from './routes/entrepreneurs'
 import { Route as JoinRouteImport } from './routes/join'
 import { Route as JuniorRouteImport } from './routes/junior'
 import { Route as ProgramsRouteImport } from './routes/programs'
+import { Route as ResetPasswordRouteImport } from './routes/reset-password'
 import { Route as YoungRouteImport } from './routes/young'
 import { Route as AdminIndexRouteImport } from './routes/admin/index'
 import { Route as AdminClassesRouteImport } from './routes/admin/classes'
@@ -32,6 +34,7 @@ import { Route as AdminProjectsRouteImport } from './routes/admin/projects'
 import { Route as AdminRegistrationsRouteImport } from './routes/admin/registrations'
 import { Route as AdminSkillsRouteImport } from './routes/admin/skills'
 import { Route as AdminStudentsRouteImport } from './routes/admin/students'
+import { Route as AdminTeamRouteImport } from './routes/admin/team'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -56,6 +59,11 @@ const AdminRoute = AdminRouteImport.update({
 const AuthRoute = AuthRouteImport.update({
   id: '/auth',
   path: '/auth',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ClaimAdminRoute = ClaimAdminRouteImport.update({
+  id: '/claim-admin',
+  path: '/claim-admin',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ClassesRoute = ClassesRouteImport.update({
@@ -91,6 +99,11 @@ const JuniorRoute = JuniorRouteImport.update({
 const ProgramsRoute = ProgramsRouteImport.update({
   id: '/programs',
   path: '/programs',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ResetPasswordRoute = ResetPasswordRouteImport.update({
+  id: '/reset-password',
+  path: '/reset-password',
   getParentRoute: () => rootRouteImport,
 } as any)
 const YoungRoute = YoungRouteImport.update({
@@ -148,12 +161,18 @@ const AdminStudentsRoute = AdminStudentsRouteImport.update({
   path: '/students',
   getParentRoute: () => AdminRoute,
 } as any)
+const AdminTeamRoute = AdminTeamRouteImport.update({
+  id: '/team',
+  path: '/team',
+  getParentRoute: () => AdminRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/admin': typeof AdminRouteWithChildren
   '/about': typeof AboutRoute
   '/auth': typeof AuthRoute
+  '/claim-admin': typeof ClaimAdminRoute
   '/classes': typeof ClassesRoute
   '/contact': typeof ContactRoute
   '/dashboard': typeof DashboardRoute
@@ -161,6 +180,7 @@ export interface FileRoutesByFullPath {
   '/join': typeof JoinRoute
   '/junior': typeof JuniorRoute
   '/programs': typeof ProgramsRoute
+  '/reset-password': typeof ResetPasswordRoute
   '/young': typeof YoungRoute
   '/admin/classes': typeof AdminClassesRoute
   '/admin/enrollments': typeof AdminEnrollmentsRoute
@@ -171,6 +191,7 @@ export interface FileRoutesByFullPath {
   '/admin/registrations': typeof AdminRegistrationsRoute
   '/admin/skills': typeof AdminSkillsRoute
   '/admin/students': typeof AdminStudentsRoute
+  '/admin/team': typeof AdminTeamRoute
   '/admin/': typeof AdminIndexRoute
 }
 export interface FileRoutesByTo {
@@ -178,6 +199,7 @@ export interface FileRoutesByTo {
   '/admin': typeof AdminIndexRoute
   '/about': typeof AboutRoute
   '/auth': typeof AuthRoute
+  '/claim-admin': typeof ClaimAdminRoute
   '/classes': typeof ClassesRoute
   '/contact': typeof ContactRoute
   '/dashboard': typeof DashboardRoute
@@ -185,6 +207,7 @@ export interface FileRoutesByTo {
   '/join': typeof JoinRoute
   '/junior': typeof JuniorRoute
   '/programs': typeof ProgramsRoute
+  '/reset-password': typeof ResetPasswordRoute
   '/young': typeof YoungRoute
   '/admin/classes': typeof AdminClassesRoute
   '/admin/enrollments': typeof AdminEnrollmentsRoute
@@ -195,6 +218,7 @@ export interface FileRoutesByTo {
   '/admin/registrations': typeof AdminRegistrationsRoute
   '/admin/skills': typeof AdminSkillsRoute
   '/admin/students': typeof AdminStudentsRoute
+  '/admin/team': typeof AdminTeamRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -202,6 +226,7 @@ export interface FileRoutesById {
   '/admin': typeof AdminRouteWithChildren
   '/about': typeof AboutRoute
   '/auth': typeof AuthRoute
+  '/claim-admin': typeof ClaimAdminRoute
   '/classes': typeof ClassesRoute
   '/contact': typeof ContactRoute
   '/dashboard': typeof DashboardRoute
@@ -209,6 +234,7 @@ export interface FileRoutesById {
   '/join': typeof JoinRoute
   '/junior': typeof JuniorRoute
   '/programs': typeof ProgramsRoute
+  '/reset-password': typeof ResetPasswordRoute
   '/young': typeof YoungRoute
   '/admin/classes': typeof AdminClassesRoute
   '/admin/enrollments': typeof AdminEnrollmentsRoute
@@ -219,6 +245,7 @@ export interface FileRoutesById {
   '/admin/registrations': typeof AdminRegistrationsRoute
   '/admin/skills': typeof AdminSkillsRoute
   '/admin/students': typeof AdminStudentsRoute
+  '/admin/team': typeof AdminTeamRoute
   '/admin/': typeof AdminIndexRoute
 }
 export interface FileRouteTypes {
@@ -228,6 +255,7 @@ export interface FileRouteTypes {
     | '/admin'
     | '/about'
     | '/auth'
+    | '/claim-admin'
     | '/classes'
     | '/contact'
     | '/dashboard'
@@ -235,6 +263,7 @@ export interface FileRouteTypes {
     | '/join'
     | '/junior'
     | '/programs'
+    | '/reset-password'
     | '/young'
     | '/admin/classes'
     | '/admin/enrollments'
@@ -245,6 +274,7 @@ export interface FileRouteTypes {
     | '/admin/registrations'
     | '/admin/skills'
     | '/admin/students'
+    | '/admin/team'
     | '/admin/'
   fileRoutesByTo: FileRoutesByTo
   to:
@@ -252,6 +282,7 @@ export interface FileRouteTypes {
     | '/admin'
     | '/about'
     | '/auth'
+    | '/claim-admin'
     | '/classes'
     | '/contact'
     | '/dashboard'
@@ -259,6 +290,7 @@ export interface FileRouteTypes {
     | '/join'
     | '/junior'
     | '/programs'
+    | '/reset-password'
     | '/young'
     | '/admin/classes'
     | '/admin/enrollments'
@@ -269,12 +301,14 @@ export interface FileRouteTypes {
     | '/admin/registrations'
     | '/admin/skills'
     | '/admin/students'
+    | '/admin/team'
   id:
     | '__root__'
     | '/'
     | '/admin'
     | '/about'
     | '/auth'
+    | '/claim-admin'
     | '/classes'
     | '/contact'
     | '/dashboard'
@@ -282,6 +316,7 @@ export interface FileRouteTypes {
     | '/join'
     | '/junior'
     | '/programs'
+    | '/reset-password'
     | '/young'
     | '/admin/classes'
     | '/admin/enrollments'
@@ -292,6 +327,7 @@ export interface FileRouteTypes {
     | '/admin/registrations'
     | '/admin/skills'
     | '/admin/students'
+    | '/admin/team'
     | '/admin/'
   fileRoutesById: FileRoutesById
 }
@@ -301,6 +337,7 @@ export interface RootRouteChildren {
   AboutRoute: typeof AboutRoute
   AdminRoute: typeof AdminRouteWithChildren
   AuthRoute: typeof AuthRoute
+  ClaimAdminRoute: typeof ClaimAdminRoute
   ClassesRoute: typeof ClassesRoute
   ContactRoute: typeof ContactRoute
   DashboardRoute: typeof DashboardRoute
@@ -308,6 +345,7 @@ export interface RootRouteChildren {
   JoinRoute: typeof JoinRoute
   JuniorRoute: typeof JuniorRoute
   ProgramsRoute: typeof ProgramsRoute
+  ResetPasswordRoute: typeof ResetPasswordRoute
   YoungRoute: typeof YoungRoute
 }
 
@@ -346,6 +384,13 @@ declare module '@tanstack/react-router' {
       path: '/auth'
       fullPath: '/auth'
       preLoaderRoute: typeof AuthRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/claim-admin': {
+      id: '/claim-admin'
+      path: '/claim-admin'
+      fullPath: '/claim-admin'
+      preLoaderRoute: typeof ClaimAdminRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/classes': {
@@ -395,6 +440,13 @@ declare module '@tanstack/react-router' {
       path: '/programs'
       fullPath: '/programs'
       preLoaderRoute: typeof ProgramsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/reset-password': {
+      id: '/reset-password'
+      path: '/reset-password'
+      fullPath: '/reset-password'
+      preLoaderRoute: typeof ResetPasswordRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/young': {
@@ -474,6 +526,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AdminStudentsRouteImport
       parentRoute: typeof AdminRoute
     }
+    '/admin/team': {
+      id: '/admin/team'
+      path: '/team'
+      fullPath: '/admin/team'
+      preLoaderRoute: typeof AdminTeamRouteImport
+      parentRoute: typeof AdminRoute
+    }
   }
 }
 
@@ -487,6 +546,7 @@ interface AdminRouteChildren {
   AdminRegistrationsRoute: typeof AdminRegistrationsRoute
   AdminSkillsRoute: typeof AdminSkillsRoute
   AdminStudentsRoute: typeof AdminStudentsRoute
+  AdminTeamRoute: typeof AdminTeamRoute
   AdminIndexRoute: typeof AdminIndexRoute
 }
 
@@ -500,6 +560,7 @@ const AdminRouteChildren: AdminRouteChildren = {
   AdminRegistrationsRoute: AdminRegistrationsRoute,
   AdminSkillsRoute: AdminSkillsRoute,
   AdminStudentsRoute: AdminStudentsRoute,
+  AdminTeamRoute: AdminTeamRoute,
   AdminIndexRoute: AdminIndexRoute,
 }
 
@@ -511,6 +572,7 @@ const rootRouteChildren: RootRouteChildren = {
   AboutRoute: AboutRoute,
   AdminRoute: AdminRouteWithChildren,
   AuthRoute: AuthRoute,
+  ClaimAdminRoute: ClaimAdminRoute,
   ClassesRoute: ClassesRoute,
   ContactRoute: ContactRoute,
   DashboardRoute: DashboardRoute,
@@ -518,6 +580,7 @@ const rootRouteChildren: RootRouteChildren = {
   JoinRoute: JoinRoute,
   JuniorRoute: JuniorRoute,
   ProgramsRoute: ProgramsRoute,
+  ResetPasswordRoute: ResetPasswordRoute,
   YoungRoute: YoungRoute,
 }
 export const routeTree = rootRouteImport
