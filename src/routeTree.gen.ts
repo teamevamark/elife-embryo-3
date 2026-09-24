@@ -11,8 +11,10 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as AboutRouteImport } from './routes/about'
+import { Route as AdminRouteRouteImport } from './routes/admin/route'
 import { Route as AdminRouteImport } from './routes/admin'
 import { Route as AuthRouteImport } from './routes/auth'
+import { Route as ClaimAdminRouteImport } from './routes/claim-admin'
 import { Route as ClassesRouteImport } from './routes/classes'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as DashboardRouteImport } from './routes/dashboard'
@@ -20,7 +22,19 @@ import { Route as EntrepreneursRouteImport } from './routes/entrepreneurs'
 import { Route as JoinRouteImport } from './routes/join'
 import { Route as JuniorRouteImport } from './routes/junior'
 import { Route as ProgramsRouteImport } from './routes/programs'
+import { Route as ResetPasswordRouteImport } from './routes/reset-password'
 import { Route as YoungRouteImport } from './routes/young'
+import { Route as AdminIndexRouteImport } from './routes/admin/index'
+import { Route as AdminClassesRouteImport } from './routes/admin/classes'
+import { Route as AdminEnrollmentsRouteImport } from './routes/admin/enrollments'
+import { Route as AdminEntrepreneursRouteImport } from './routes/admin/entrepreneurs'
+import { Route as AdminParentsRouteImport } from './routes/admin/parents'
+import { Route as AdminProgramsRouteImport } from './routes/admin/programs'
+import { Route as AdminProjectsRouteImport } from './routes/admin/projects'
+import { Route as AdminRegistrationsRouteImport } from './routes/admin/registrations'
+import { Route as AdminSkillsRouteImport } from './routes/admin/skills'
+import { Route as AdminStudentsRouteImport } from './routes/admin/students'
+import { Route as AdminTeamRouteImport } from './routes/admin/team'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -32,6 +46,11 @@ const AboutRoute = AboutRouteImport.update({
   path: '/about',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AdminRouteRoute = AdminRouteRouteImport.update({
+  id: '/admin',
+  path: '/admin',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const AdminRoute = AdminRouteImport.update({
   id: '/admin',
   path: '/admin',
@@ -40,6 +59,11 @@ const AdminRoute = AdminRouteImport.update({
 const AuthRoute = AuthRouteImport.update({
   id: '/auth',
   path: '/auth',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ClaimAdminRoute = ClaimAdminRouteImport.update({
+  id: '/claim-admin',
+  path: '/claim-admin',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ClassesRoute = ClassesRouteImport.update({
@@ -77,17 +101,78 @@ const ProgramsRoute = ProgramsRouteImport.update({
   path: '/programs',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ResetPasswordRoute = ResetPasswordRouteImport.update({
+  id: '/reset-password',
+  path: '/reset-password',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const YoungRoute = YoungRouteImport.update({
   id: '/young',
   path: '/young',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AdminIndexRoute = AdminIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => AdminRoute,
+} as any)
+const AdminClassesRoute = AdminClassesRouteImport.update({
+  id: '/classes',
+  path: '/classes',
+  getParentRoute: () => AdminRoute,
+} as any)
+const AdminEnrollmentsRoute = AdminEnrollmentsRouteImport.update({
+  id: '/enrollments',
+  path: '/enrollments',
+  getParentRoute: () => AdminRoute,
+} as any)
+const AdminEntrepreneursRoute = AdminEntrepreneursRouteImport.update({
+  id: '/entrepreneurs',
+  path: '/entrepreneurs',
+  getParentRoute: () => AdminRoute,
+} as any)
+const AdminParentsRoute = AdminParentsRouteImport.update({
+  id: '/parents',
+  path: '/parents',
+  getParentRoute: () => AdminRoute,
+} as any)
+const AdminProgramsRoute = AdminProgramsRouteImport.update({
+  id: '/programs',
+  path: '/programs',
+  getParentRoute: () => AdminRoute,
+} as any)
+const AdminProjectsRoute = AdminProjectsRouteImport.update({
+  id: '/projects',
+  path: '/projects',
+  getParentRoute: () => AdminRoute,
+} as any)
+const AdminRegistrationsRoute = AdminRegistrationsRouteImport.update({
+  id: '/registrations',
+  path: '/registrations',
+  getParentRoute: () => AdminRoute,
+} as any)
+const AdminSkillsRoute = AdminSkillsRouteImport.update({
+  id: '/skills',
+  path: '/skills',
+  getParentRoute: () => AdminRoute,
+} as any)
+const AdminStudentsRoute = AdminStudentsRouteImport.update({
+  id: '/students',
+  path: '/students',
+  getParentRoute: () => AdminRoute,
+} as any)
+const AdminTeamRoute = AdminTeamRouteImport.update({
+  id: '/team',
+  path: '/team',
+  getParentRoute: () => AdminRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/admin': typeof AdminRouteWithChildren
   '/about': typeof AboutRoute
-  '/admin': typeof AdminRoute
   '/auth': typeof AuthRoute
+  '/claim-admin': typeof ClaimAdminRoute
   '/classes': typeof ClassesRoute
   '/contact': typeof ContactRoute
   '/dashboard': typeof DashboardRoute
@@ -95,13 +180,26 @@ export interface FileRoutesByFullPath {
   '/join': typeof JoinRoute
   '/junior': typeof JuniorRoute
   '/programs': typeof ProgramsRoute
+  '/reset-password': typeof ResetPasswordRoute
   '/young': typeof YoungRoute
+  '/admin/classes': typeof AdminClassesRoute
+  '/admin/enrollments': typeof AdminEnrollmentsRoute
+  '/admin/entrepreneurs': typeof AdminEntrepreneursRoute
+  '/admin/parents': typeof AdminParentsRoute
+  '/admin/programs': typeof AdminProgramsRoute
+  '/admin/projects': typeof AdminProjectsRoute
+  '/admin/registrations': typeof AdminRegistrationsRoute
+  '/admin/skills': typeof AdminSkillsRoute
+  '/admin/students': typeof AdminStudentsRoute
+  '/admin/team': typeof AdminTeamRoute
+  '/admin/': typeof AdminIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/admin': typeof AdminIndexRoute
   '/about': typeof AboutRoute
-  '/admin': typeof AdminRoute
   '/auth': typeof AuthRoute
+  '/claim-admin': typeof ClaimAdminRoute
   '/classes': typeof ClassesRoute
   '/contact': typeof ContactRoute
   '/dashboard': typeof DashboardRoute
@@ -109,14 +207,26 @@ export interface FileRoutesByTo {
   '/join': typeof JoinRoute
   '/junior': typeof JuniorRoute
   '/programs': typeof ProgramsRoute
+  '/reset-password': typeof ResetPasswordRoute
   '/young': typeof YoungRoute
+  '/admin/classes': typeof AdminClassesRoute
+  '/admin/enrollments': typeof AdminEnrollmentsRoute
+  '/admin/entrepreneurs': typeof AdminEntrepreneursRoute
+  '/admin/parents': typeof AdminParentsRoute
+  '/admin/programs': typeof AdminProgramsRoute
+  '/admin/projects': typeof AdminProjectsRoute
+  '/admin/registrations': typeof AdminRegistrationsRoute
+  '/admin/skills': typeof AdminSkillsRoute
+  '/admin/students': typeof AdminStudentsRoute
+  '/admin/team': typeof AdminTeamRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/admin': typeof AdminRouteWithChildren
   '/about': typeof AboutRoute
-  '/admin': typeof AdminRoute
   '/auth': typeof AuthRoute
+  '/claim-admin': typeof ClaimAdminRoute
   '/classes': typeof ClassesRoute
   '/contact': typeof ContactRoute
   '/dashboard': typeof DashboardRoute
@@ -124,15 +234,28 @@ export interface FileRoutesById {
   '/join': typeof JoinRoute
   '/junior': typeof JuniorRoute
   '/programs': typeof ProgramsRoute
+  '/reset-password': typeof ResetPasswordRoute
   '/young': typeof YoungRoute
+  '/admin/classes': typeof AdminClassesRoute
+  '/admin/enrollments': typeof AdminEnrollmentsRoute
+  '/admin/entrepreneurs': typeof AdminEntrepreneursRoute
+  '/admin/parents': typeof AdminParentsRoute
+  '/admin/programs': typeof AdminProgramsRoute
+  '/admin/projects': typeof AdminProjectsRoute
+  '/admin/registrations': typeof AdminRegistrationsRoute
+  '/admin/skills': typeof AdminSkillsRoute
+  '/admin/students': typeof AdminStudentsRoute
+  '/admin/team': typeof AdminTeamRoute
+  '/admin/': typeof AdminIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
-    | '/about'
     | '/admin'
+    | '/about'
     | '/auth'
+    | '/claim-admin'
     | '/classes'
     | '/contact'
     | '/dashboard'
@@ -140,13 +263,26 @@ export interface FileRouteTypes {
     | '/join'
     | '/junior'
     | '/programs'
+    | '/reset-password'
     | '/young'
+    | '/admin/classes'
+    | '/admin/enrollments'
+    | '/admin/entrepreneurs'
+    | '/admin/parents'
+    | '/admin/programs'
+    | '/admin/projects'
+    | '/admin/registrations'
+    | '/admin/skills'
+    | '/admin/students'
+    | '/admin/team'
+    | '/admin/'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
-    | '/about'
     | '/admin'
+    | '/about'
     | '/auth'
+    | '/claim-admin'
     | '/classes'
     | '/contact'
     | '/dashboard'
@@ -154,13 +290,25 @@ export interface FileRouteTypes {
     | '/join'
     | '/junior'
     | '/programs'
+    | '/reset-password'
     | '/young'
+    | '/admin/classes'
+    | '/admin/enrollments'
+    | '/admin/entrepreneurs'
+    | '/admin/parents'
+    | '/admin/programs'
+    | '/admin/projects'
+    | '/admin/registrations'
+    | '/admin/skills'
+    | '/admin/students'
+    | '/admin/team'
   id:
     | '__root__'
     | '/'
-    | '/about'
     | '/admin'
+    | '/about'
     | '/auth'
+    | '/claim-admin'
     | '/classes'
     | '/contact'
     | '/dashboard'
@@ -168,14 +316,28 @@ export interface FileRouteTypes {
     | '/join'
     | '/junior'
     | '/programs'
+    | '/reset-password'
     | '/young'
+    | '/admin/classes'
+    | '/admin/enrollments'
+    | '/admin/entrepreneurs'
+    | '/admin/parents'
+    | '/admin/programs'
+    | '/admin/projects'
+    | '/admin/registrations'
+    | '/admin/skills'
+    | '/admin/students'
+    | '/admin/team'
+    | '/admin/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AdminRouteRoute: typeof AdminRouteRoute
   AboutRoute: typeof AboutRoute
-  AdminRoute: typeof AdminRoute
+  AdminRoute: typeof AdminRouteWithChildren
   AuthRoute: typeof AuthRoute
+  ClaimAdminRoute: typeof ClaimAdminRoute
   ClassesRoute: typeof ClassesRoute
   ContactRoute: typeof ContactRoute
   DashboardRoute: typeof DashboardRoute
@@ -183,6 +345,7 @@ export interface RootRouteChildren {
   JoinRoute: typeof JoinRoute
   JuniorRoute: typeof JuniorRoute
   ProgramsRoute: typeof ProgramsRoute
+  ResetPasswordRoute: typeof ResetPasswordRoute
   YoungRoute: typeof YoungRoute
 }
 
@@ -206,6 +369,13 @@ declare module '@tanstack/react-router' {
       id: '/admin'
       path: '/admin'
       fullPath: '/admin'
+      preLoaderRoute: typeof AdminRouteRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/admin': {
+      id: '/admin'
+      path: '/admin'
+      fullPath: '/admin'
       preLoaderRoute: typeof AdminRouteImport
       parentRoute: typeof rootRouteImport
     }
@@ -214,6 +384,13 @@ declare module '@tanstack/react-router' {
       path: '/auth'
       fullPath: '/auth'
       preLoaderRoute: typeof AuthRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/claim-admin': {
+      id: '/claim-admin'
+      path: '/claim-admin'
+      fullPath: '/claim-admin'
+      preLoaderRoute: typeof ClaimAdminRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/classes': {
@@ -265,6 +442,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ProgramsRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/reset-password': {
+      id: '/reset-password'
+      path: '/reset-password'
+      fullPath: '/reset-password'
+      preLoaderRoute: typeof ResetPasswordRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/young': {
       id: '/young'
       path: '/young'
@@ -272,14 +456,123 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof YoungRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/admin/': {
+      id: '/admin/'
+      path: '/'
+      fullPath: '/admin/'
+      preLoaderRoute: typeof AdminIndexRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/admin/classes': {
+      id: '/admin/classes'
+      path: '/classes'
+      fullPath: '/admin/classes'
+      preLoaderRoute: typeof AdminClassesRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/admin/enrollments': {
+      id: '/admin/enrollments'
+      path: '/enrollments'
+      fullPath: '/admin/enrollments'
+      preLoaderRoute: typeof AdminEnrollmentsRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/admin/entrepreneurs': {
+      id: '/admin/entrepreneurs'
+      path: '/entrepreneurs'
+      fullPath: '/admin/entrepreneurs'
+      preLoaderRoute: typeof AdminEntrepreneursRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/admin/parents': {
+      id: '/admin/parents'
+      path: '/parents'
+      fullPath: '/admin/parents'
+      preLoaderRoute: typeof AdminParentsRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/admin/programs': {
+      id: '/admin/programs'
+      path: '/programs'
+      fullPath: '/admin/programs'
+      preLoaderRoute: typeof AdminProgramsRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/admin/projects': {
+      id: '/admin/projects'
+      path: '/projects'
+      fullPath: '/admin/projects'
+      preLoaderRoute: typeof AdminProjectsRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/admin/registrations': {
+      id: '/admin/registrations'
+      path: '/registrations'
+      fullPath: '/admin/registrations'
+      preLoaderRoute: typeof AdminRegistrationsRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/admin/skills': {
+      id: '/admin/skills'
+      path: '/skills'
+      fullPath: '/admin/skills'
+      preLoaderRoute: typeof AdminSkillsRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/admin/students': {
+      id: '/admin/students'
+      path: '/students'
+      fullPath: '/admin/students'
+      preLoaderRoute: typeof AdminStudentsRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/admin/team': {
+      id: '/admin/team'
+      path: '/team'
+      fullPath: '/admin/team'
+      preLoaderRoute: typeof AdminTeamRouteImport
+      parentRoute: typeof AdminRoute
+    }
   }
 }
 
+interface AdminRouteChildren {
+  AdminClassesRoute: typeof AdminClassesRoute
+  AdminEnrollmentsRoute: typeof AdminEnrollmentsRoute
+  AdminEntrepreneursRoute: typeof AdminEntrepreneursRoute
+  AdminParentsRoute: typeof AdminParentsRoute
+  AdminProgramsRoute: typeof AdminProgramsRoute
+  AdminProjectsRoute: typeof AdminProjectsRoute
+  AdminRegistrationsRoute: typeof AdminRegistrationsRoute
+  AdminSkillsRoute: typeof AdminSkillsRoute
+  AdminStudentsRoute: typeof AdminStudentsRoute
+  AdminTeamRoute: typeof AdminTeamRoute
+  AdminIndexRoute: typeof AdminIndexRoute
+}
+
+const AdminRouteChildren: AdminRouteChildren = {
+  AdminClassesRoute: AdminClassesRoute,
+  AdminEnrollmentsRoute: AdminEnrollmentsRoute,
+  AdminEntrepreneursRoute: AdminEntrepreneursRoute,
+  AdminParentsRoute: AdminParentsRoute,
+  AdminProgramsRoute: AdminProgramsRoute,
+  AdminProjectsRoute: AdminProjectsRoute,
+  AdminRegistrationsRoute: AdminRegistrationsRoute,
+  AdminSkillsRoute: AdminSkillsRoute,
+  AdminStudentsRoute: AdminStudentsRoute,
+  AdminTeamRoute: AdminTeamRoute,
+  AdminIndexRoute: AdminIndexRoute,
+}
+
+const AdminRouteWithChildren = AdminRoute._addFileChildren(AdminRouteChildren)
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AdminRouteRoute: AdminRouteRoute,
   AboutRoute: AboutRoute,
-  AdminRoute: AdminRoute,
+  AdminRoute: AdminRouteWithChildren,
   AuthRoute: AuthRoute,
+  ClaimAdminRoute: ClaimAdminRoute,
   ClassesRoute: ClassesRoute,
   ContactRoute: ContactRoute,
   DashboardRoute: DashboardRoute,
@@ -287,6 +580,7 @@ const rootRouteChildren: RootRouteChildren = {
   JoinRoute: JoinRoute,
   JuniorRoute: JuniorRoute,
   ProgramsRoute: ProgramsRoute,
+  ResetPasswordRoute: ResetPasswordRoute,
   YoungRoute: YoungRoute,
 }
 export const routeTree = rootRouteImport
